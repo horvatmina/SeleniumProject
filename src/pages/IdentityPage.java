@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class IdentityPage {
 	WebDriver driver;
+	WebElement firstNameField;
 	WebElement lastNameField;
 	WebElement currentPasswordField;
 	WebElement saveButton;
@@ -16,8 +17,12 @@ public class IdentityPage {
 		this.driver = driver;
 	}
 	//GETTERS
+	
 	public WebElement getLastNameField() {
 		return driver.findElement(By.id("lastname"));
+	}
+	public WebElement getFirstNameField() {
+		return driver.findElement(By.id("firstname"));
 	}
 	public WebElement getCurrentPasswordField() {
 		return driver.findElement(By.id("old_passwd"));
@@ -26,7 +31,7 @@ public class IdentityPage {
 		return driver.findElement(By.name("submitIdentity"));
 	}	
 	public WebElement getAlertMessage() {
-		return driver.findElement(By.xpath("//*[@id=\"center_column\"]/div/p"));
+		return driver.findElement(By.className("alert-success"));
 	}
 	public WebElement getBackToYourAccount() {
 		return driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/a"));	                                   
@@ -39,6 +44,10 @@ public class IdentityPage {
 		this.getBackToYourAccount().click();
 	}
 	//SEND KEYS
+	public void firstName (String firstname) {
+		this.getFirstNameField().clear();
+		this.getFirstNameField().sendKeys(firstname);
+	}
 	public void lastName (String lastname) {
 		this.getLastNameField().clear();
 		this.getLastNameField().sendKeys(lastname);
@@ -47,10 +56,6 @@ public class IdentityPage {
 		this.getCurrentPasswordField().clear();
 		this.getCurrentPasswordField().sendKeys(password);
 	}
-	
-	
-	
-	
 	
 
 }

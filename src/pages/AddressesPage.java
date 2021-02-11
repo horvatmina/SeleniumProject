@@ -99,8 +99,7 @@ public class AddressesPage {
 	public void address1 (String address) {
 		this.getAddress1Field().clear();
 		this.getAddress1Field().sendKeys(address);
-	}
-	
+	}	
 	public void city (String city) {
 		this.getCityField().clear();
 		this.getCityField().sendKeys(city);

@@ -47,7 +47,7 @@ public class AddressesTests extends TestBase {
 		
 		addressesPage.address1(address);
 		addressesPage.city(city);
-		addressesPage.chooseState(1); //dropdown
+		addressesPage.chooseState(1); 
 		Thread.sleep(2000);
 		addressesPage.zip(zip);
 		addressesPage.phone(phone);
