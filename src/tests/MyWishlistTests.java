@@ -23,7 +23,9 @@ public class MyWishlistTests extends TestBase {
 		String wishlistName1 = excelReader.getCellData("My Wishlist", 12, 4);
 		String wishlistName2 = excelReader.getCellData("My Wishlist", 14, 4);
 		myWishlistPage.addWishlist(wishlistName1);
+		Thread.sleep(2000);
 		myWishlistPage.addWishlist(wishlistName2);
+		Thread.sleep(2000);
 		Assert.assertEquals(myWishlistPage.getNumberofLists(), 3);		
 	} 
 
@@ -33,7 +35,6 @@ public class MyWishlistTests extends TestBase {
 		Thread.sleep(2000);
 		myAccountPage.myWishlistsClick();
 		myWishlistPage.deleteAWishlist();
-		Thread.sleep(2000);
 		Assert.assertEquals(myWishlistPage.getNumberofLists(), 2);
 		
 	} 

@@ -9,11 +9,11 @@ public class LogInTests extends TestBase {
 	
 	@Test (priority = 0)
 	public void logInValidCredentials () throws InterruptedException {	
-		String expectedText = excelReader.getCellData("Login", 8, 4);
 		successfulLogin ();
+		String expectedText = excelReader.getCellData("Login", 8, 4);
 		String actualText = myAccountPage.getWelcomeMessage().getText();
 		Assert.assertEquals(actualText, expectedText);
-	}
+	} 
 	
 	@Test (priority = 5)
 	public void wrongEmail () throws InterruptedException {	
@@ -47,6 +47,6 @@ public class LogInTests extends TestBase {
 		successfulLogin ();
 		myAccountPage.signOutButtonClick();
 		Assert.assertEquals(true, myAccountPage.getSignInButton().isDisplayed());
-	}
+	} 
 		
 }

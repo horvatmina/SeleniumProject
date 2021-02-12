@@ -32,9 +32,10 @@ public class TestBase {
 	OrderPage orderPage;
 	
 	//LOGIN
-	public void login (String email, String password) {
+	public void login (String email, String password) throws InterruptedException {
 		homePage.signInTabClick();
 		myAccountPage.login(email, password);
+		Thread.sleep(2000);
 	}
 	
 	public void successfulLogin() throws InterruptedException {

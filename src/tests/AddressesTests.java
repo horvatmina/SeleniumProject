@@ -10,7 +10,6 @@ public class AddressesTests extends TestBase {
 	public void successfulUpdate() throws InterruptedException {
 		successfulLogin ();
 		Thread.sleep(2000);
-
 		myAccountPage.myAddressesClick();
 		addressesPage.updateButtonClick();
 
@@ -19,18 +18,11 @@ public class AddressesTests extends TestBase {
 
 		addressesPage.address1(newAddress);
 		Thread.sleep(2000);
-		addressesPage.saveButtonClick();
-
-		Assert.assertEquals(addressesPage.getCurrentAddressName().getText(), newAddress);
 		
+		addressesPage.saveButtonClick();
+		Assert.assertEquals(addressesPage.getCurrentAddressName().getText(), newAddress);		
 		backToOriginalAddress (oldAddress);
-
-		//addressesPage.updateButtonClick();
-		//addressesPage.address1(oldAddress);
-		//addressesPage.saveButtonClick();
-
 		Assert.assertEquals(addressesPage.getCurrentAddressName().getText(), oldAddress);
-		//backToOriginalAddress ();
 	} 
 
 	@Test (priority = 5)

@@ -38,9 +38,6 @@ public class MyWishlistPage {
 		return driver.findElements(By.className("icon"));
 	}
 	
-	public int getNumberofLists() {
-		return getWishlists().size();
-	}
 
 	//METHODS
 	public void addWishlist (String name) {
@@ -49,17 +46,23 @@ public class MyWishlistPage {
 		this.getSaveButton().click();
 	}
 	
+	public int getNumberofLists() {
+		return getWishlists().size();
+	}
+	
 	public void deleteAllWishlists() throws InterruptedException {
 		for(int i = 0; i < getNumberofLists(); i++) {
 			getDeleteButtons().get(i).click();
 			driver.switchTo().alert().accept();
 		}
 		
-		//Thread.sleep(2000);
+		Thread.sleep(2000);
 	}
 	
 	public void deleteAWishlist() throws InterruptedException {
 			getDeleteButtons().get(0).click();
 			driver.switchTo().alert().accept();
+			Thread.sleep(2000);
 	}
+
 }
