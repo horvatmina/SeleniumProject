@@ -71,7 +71,7 @@ public class MyAccountPage {
 		this.getHomeButton().click();
 	}
 
-	// SEND KEYS
+	// INPUT
 	public void login(String email, String password) {
 		this.getEmailInput().clear();
 		this.getEmailInput().sendKeys(email);

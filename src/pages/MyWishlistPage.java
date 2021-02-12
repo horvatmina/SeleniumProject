@@ -13,10 +13,9 @@ public class MyWishlistPage {
 	WebElement nameField;
 	WebElement saveButton;
 	WebElement deleteButton;
-	WebElement dresses;
-	WebElement hats;
-	WebElement pants;
-	WebElement wishlistTable;
+	List <WebElement> wishlists;
+	List <WebElement> deleteButtons;
+	public int numberOfLists;
 
 	public MyWishlistPage(WebDriver driver) {
 		this.driver = driver;
@@ -31,50 +30,36 @@ public class MyWishlistPage {
 		return driver.findElement(By.id("submitWishlist"));
 	}
 
-	public WebElement getDeleteButton() {
-		return driver.findElement(By.className("icon-remove"));
+	public List<WebElement> getWishlists() {
+		return driver.findElements(By.cssSelector("[id*=wishlist_]"));
 	}
 
-	public WebElement getDresses() {
-		return driver.findElement(By.linkText("Dresses"));
-	}
-
-	public WebElement getHats() {
-		return driver.findElement(By.linkText("Hats"));
-	}
-
-	public WebElement getPants() {
-		return driver.findElement(By.linkText("Pants"));
+	public List<WebElement> getDeleteButtons() {
+		return driver.findElements(By.className("icon"));
 	}
 	
-	public WebElement getWishlistTable() {
-		return driver.findElement(By.className("mywishlist_first"));
+	public int getNumberofLists() {
+		return getWishlists().size();
 	}
 
-	//CLICK
-	public void saveButtonClick() {
-		this.getSaveButton().click();
-	}
-
-	public void deleteButtonClick() {
-		this.getDeleteButton().click();
-	}
-	
-
-	//SEND KEYS
-	public void wishlistName(String name) {
+	//METHODS
+	public void addWishlist (String name) {
 		this.getNameField().clear();
 		this.getNameField().sendKeys(name);
+		this.getSaveButton().click();
 	}
 	
-	//ASSERT
-	public void assertTheWishlist1() {
-		List<WebElement> dynamicElement = driver.findElements(By.className("mywishlist_first"));
-		if (dynamicElement.size() != 0) {
-			System.out.println("Element present");
-		} else {
-			System.out.println("Element not present");
+	public void deleteAllWishlists() throws InterruptedException {
+		for(int i = 0; i < getNumberofLists(); i++) {
+			getDeleteButtons().get(i).click();
+			driver.switchTo().alert().accept();
 		}
+		
+		//Thread.sleep(2000);
 	}
-
+	
+	public void deleteAWishlist() throws InterruptedException {
+			getDeleteButtons().get(0).click();
+			driver.switchTo().alert().accept();
+	}
 }

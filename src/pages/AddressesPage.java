@@ -29,27 +29,21 @@ public class AddressesPage {
 	public WebElement getUpdateButton() {
 		return driver.findElement(By.xpath("//a[@title=\"Update\"]"));
 	}
-
-	public WebElement getAddress1Field() {
-		return driver.findElement(By.id("address1"));
-	}
 	
 	public WebElement getSaveButton() {
 		return driver.findElement(By.id("submitAddress"));
 	}
-
-	public WebElement getCurrentAddressName() {
-		return driver.findElement(By.className("address_address1"));
-	}
 	
-	public WebElement getSecondAddressTitle() {
-		return driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/div/div[2]/ul/li[1]/h3"));
-	}                                       
-
+	public WebElement getDeleteButton() {
+		return driver.findElement(By.xpath("//a[@title=\"Delete\"]"));
+	}  
 	public WebElement getAddNewAddress() {
 		return driver.findElement(By.xpath("//a[@title=\"Add an address\"]"));
 	}
 
+	public WebElement getAddress1Field() {
+		return driver.findElement(By.id("address1"));
+	}
 	public WebElement getCityField() {
 		return driver.findElement(By.id("city"));
 	}
@@ -70,13 +64,18 @@ public class AddressesPage {
 		return driver.findElement(By.id("id_state"));
 	}
 
+	public WebElement getCurrentAddressName() {
+		return driver.findElement(By.className("address_address1"));
+	}
+	
+	public WebElement getSecondAddressTitle() {
+		return driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/div/div[2]/ul/li[1]/h3"));
+	}                                       
+
 	public WebElement getCurrentAddressTitle() {
 		return driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/div/div/ul/li[1]/h3"));
 	}
-
-	public WebElement getDeleteButton() {
-		return driver.findElement(By.xpath("//a[@title=\"Delete\"]"));
-	}  
+ 
 	
 	//CLICK
 	public void updateButtonClick () {
@@ -95,7 +94,7 @@ public class AddressesPage {
 		this.getAddNewAddress().click();
 	}
 	
-	//SEND KEYS
+	//INPUT
 	public void address1 (String address) {
 		this.getAddress1Field().clear();
 		this.getAddress1Field().sendKeys(address);

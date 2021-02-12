@@ -3,8 +3,10 @@ package tests;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -29,6 +31,7 @@ public class TestBase {
 	MyWishlistPage myWishlistPage;
 	OrderPage orderPage;
 	
+	//LOGIN
 	public void login (String email, String password) {
 		homePage.signInTabClick();
 		myAccountPage.login(email, password);
@@ -66,7 +69,7 @@ public class TestBase {
 	}
 	
 	@AfterMethod
-	public void afterTest() throws InterruptedException {
+	public void afterMethod() throws InterruptedException {
 		driver.manage().deleteAllCookies();
 		driver.navigate().refresh();
 		Thread.sleep(2000);
@@ -75,5 +78,6 @@ public class TestBase {
 	@AfterClass
 	public void afterClass() throws IOException {
 		driver.close();
+		excelReader.fis.close();
 	}
 }

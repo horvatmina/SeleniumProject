@@ -11,23 +11,20 @@ public class MyWishlistTests extends TestBase {
 		Thread.sleep(2000);
 		myAccountPage.myWishlistsClick();
 		String wishlistName = excelReader.getCellData("My Wishlist", 5, 4);
-		myWishlistPage.wishlistName(wishlistName);
-		myWishlistPage.saveButtonClick();
-		Assert.assertEquals(myWishlistPage.getDresses().getText(), wishlistName);
+		myWishlistPage.addWishlist(wishlistName);
+		Assert.assertEquals(myWishlistPage.getNumberofLists(), 1);
 	} 
 
 	@Test(priority = 5)
 	public void addMultipleWishLists() throws InterruptedException {
-		addWishList();
+		successfulLogin();
+		Thread.sleep(2000);
+		myAccountPage.myWishlistsClick();
 		String wishlistName1 = excelReader.getCellData("My Wishlist", 12, 4);
 		String wishlistName2 = excelReader.getCellData("My Wishlist", 14, 4);
-		myWishlistPage.wishlistName(wishlistName1);
-		myWishlistPage.saveButtonClick();
-		myWishlistPage.wishlistName(wishlistName2);
-		myWishlistPage.saveButtonClick();
-		Assert.assertEquals(myWishlistPage.getHats().getText(), wishlistName1);
-		Assert.assertEquals(myWishlistPage.getPants().getText(), wishlistName2);
-		
+		myWishlistPage.addWishlist(wishlistName1);
+		myWishlistPage.addWishlist(wishlistName2);
+		Assert.assertEquals(myWishlistPage.getNumberofLists(), 3);		
 	} 
 
 	@Test(priority = 10)
@@ -35,14 +32,9 @@ public class MyWishlistTests extends TestBase {
 		successfulLogin();
 		Thread.sleep(2000);
 		myAccountPage.myWishlistsClick();
-		myWishlistPage.deleteButtonClick();
+		myWishlistPage.deleteAWishlist();
 		Thread.sleep(2000);
-		driver.switchTo().alert().accept();
-		Thread.sleep(2000);
-		String wishlistName1 = excelReader.getCellData("My Wishlist", 12, 4);
-		String wishlistName2 = excelReader.getCellData("My Wishlist", 14, 4);
-		Assert.assertEquals(myWishlistPage.getHats().getText(), wishlistName1);
-		Assert.assertEquals(myWishlistPage.getPants().getText(), wishlistName2);
+		Assert.assertEquals(myWishlistPage.getNumberofLists(), 2);
 		
 	} 
 	
@@ -51,14 +43,8 @@ public class MyWishlistTests extends TestBase {
 		successfulLogin();
 		Thread.sleep(2000);
 		myAccountPage.myWishlistsClick();
-		myWishlistPage.deleteButtonClick();
-		Thread.sleep(2000);
-		driver.switchTo().alert().accept();
-		Thread.sleep(2000);
-		myWishlistPage.deleteButtonClick();
-		Thread.sleep(2000);	
-		driver.switchTo().alert().accept();
-		Thread.sleep(2000);	
-		//Assert.assertFalse(myWishlistPage.getWishlistTable().isDisplayed()); NE RADI!
+		myWishlistPage.deleteAllWishlists();
+		Assert.assertEquals(myWishlistPage.getNumberofLists(), 0);
+		
 	}
 }

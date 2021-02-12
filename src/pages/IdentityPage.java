@@ -16,8 +16,8 @@ public class IdentityPage {
 	public IdentityPage(WebDriver driver) {
 		this.driver = driver;
 	}
-	//GETTERS
 	
+	//GETTERS
 	public WebElement getLastNameField() {
 		return driver.findElement(By.id("lastname"));
 	}
@@ -36,6 +36,7 @@ public class IdentityPage {
 	public WebElement getBackToYourAccount() {
 		return driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/a"));	                                   
 	}
+	
 	//CLICK
 	public void saveButtonClick () {
 		this.getSaveButton().click();
@@ -43,7 +44,7 @@ public class IdentityPage {
 	public void backToYourAccountClick () {
 		this.getBackToYourAccount().click();
 	}
-	//SEND KEYS
+	//INPUT
 	public void firstName (String firstname) {
 		this.getFirstNameField().clear();
 		this.getFirstNameField().sendKeys(firstname);

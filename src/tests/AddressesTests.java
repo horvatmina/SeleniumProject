@@ -22,12 +22,15 @@ public class AddressesTests extends TestBase {
 		addressesPage.saveButtonClick();
 
 		Assert.assertEquals(addressesPage.getCurrentAddressName().getText(), newAddress);
+		
+		backToOriginalAddress (oldAddress);
 
-		addressesPage.updateButtonClick();
-		addressesPage.address1(oldAddress);
-		addressesPage.saveButtonClick();
+		//addressesPage.updateButtonClick();
+		//addressesPage.address1(oldAddress);
+		//addressesPage.saveButtonClick();
 
 		Assert.assertEquals(addressesPage.getCurrentAddressName().getText(), oldAddress);
+		//backToOriginalAddress ();
 	} 
 
 	@Test (priority = 5)
@@ -68,6 +71,13 @@ public class AddressesTests extends TestBase {
 		driver.switchTo().alert().accept();
 		
 		String address = excelReader.getCellData("My Account", 31, 4);
+		
 		Assert.assertEquals(addressesPage.getCurrentAddressTitle().getText(), address);	
 	} 
+	
+	public void backToOriginalAddress (String address) throws InterruptedException {
+		addressesPage.updateButtonClick();
+		addressesPage.address1(address);
+		addressesPage.saveButtonClick();
+	}
 }
