@@ -18,7 +18,8 @@ import pages.HomePage;
 import pages.IdentityPage;
 import pages.MyAccountPage;
 import pages.MyWishlistPage;
-import pages.OrderPage;
+import pages.ProductPage;
+import pages.CategoryPage;
 
 
 public class TestBase {
@@ -29,7 +30,8 @@ public class TestBase {
 	ExcelReader excelReader;
 	IdentityPage identityPage;
 	MyWishlistPage myWishlistPage;
-	OrderPage orderPage;
+	CategoryPage categoryPage;
+	ProductPage productPage;
 	
 	//LOGIN
 	public void login (String email, String password) throws InterruptedException {
@@ -56,7 +58,8 @@ public class TestBase {
 		this.excelReader = new ExcelReader ("data\\data.xlsx");
 		this.identityPage = new IdentityPage (driver);
 		this.myWishlistPage = new MyWishlistPage (driver);
-		this.orderPage = new OrderPage (driver);
+		this.categoryPage = new CategoryPage (driver);
+		this.productPage = new ProductPage (driver);
 
 		
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

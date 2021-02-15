@@ -12,7 +12,7 @@ public class MyWishlistTests extends TestBase {
 		myAccountPage.myWishlistsClick();
 		String wishlistName = excelReader.getCellData("My Wishlist", 5, 4);
 		myWishlistPage.addWishlist(wishlistName);
-		Assert.assertEquals(myWishlistPage.getNumberofLists(), 1);
+		Assert.assertEquals(myWishlistPage.getNumberOfLists(), 1);
 	} 
 
 	@Test(priority = 5)
@@ -26,7 +26,7 @@ public class MyWishlistTests extends TestBase {
 		Thread.sleep(2000);
 		myWishlistPage.addWishlist(wishlistName2);
 		Thread.sleep(2000);
-		Assert.assertEquals(myWishlistPage.getNumberofLists(), 3);		
+		Assert.assertEquals(myWishlistPage.getNumberOfLists(), 3);		
 	} 
 
 	@Test(priority = 10)
@@ -35,7 +35,7 @@ public class MyWishlistTests extends TestBase {
 		Thread.sleep(2000);
 		myAccountPage.myWishlistsClick();
 		myWishlistPage.deleteAWishlist();
-		Assert.assertEquals(myWishlistPage.getNumberofLists(), 2);
+		Assert.assertEquals(myWishlistPage.getNumberOfLists(), 2);
 		
 	} 
 	
@@ -45,7 +45,7 @@ public class MyWishlistTests extends TestBase {
 		Thread.sleep(2000);
 		myAccountPage.myWishlistsClick();
 		myWishlistPage.deleteAllWishlists();
-		Assert.assertEquals(myWishlistPage.getNumberofLists(), 0);
+		Assert.assertEquals(myWishlistPage.getNumberOfLists(), 0);
 		
 	}
 }

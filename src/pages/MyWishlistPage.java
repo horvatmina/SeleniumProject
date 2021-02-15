@@ -46,12 +46,12 @@ public class MyWishlistPage {
 		this.getSaveButton().click();
 	}
 	
-	public int getNumberofLists() {
+	public int getNumberOfLists() {
 		return getWishlists().size();
 	}
 	
 	public void deleteAllWishlists() throws InterruptedException {
-		for(int i = 0; i < getNumberofLists(); i++) {
+		for(int i = 0; i < getNumberOfLists(); i++) {
 			getDeleteButtons().get(i).click();
 			driver.switchTo().alert().accept();
 		}

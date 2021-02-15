@@ -16,6 +16,7 @@ public class MyAccountPage {
 	WebElement myPersonalInfo;
 	WebElement myWishlists;
 	WebElement homeButton;
+	WebElement womenTab;
 
 	public MyAccountPage(WebDriver driver) {
 		this.driver = driver;
@@ -49,6 +50,9 @@ public class MyAccountPage {
 	public WebElement getMyWishlists() {
 		return driver.findElement(By.xpath("//a[@title='My wishlists']"));
 	}
+	public WebElement getWomenTab() {
+		return driver.findElement(By.xpath("//a[@title='Women']"));
+	}
 	public WebElement getHomeButton() {
 		return driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li/a"));
 		// + "//a[@title='Home']"));
@@ -66,6 +70,9 @@ public class MyAccountPage {
 	}
 	public void myWishlistsClick() {
 		this.getMyWishlists().click();
+	}
+	public void womenTabClick () {
+		this.getWomenTab().click();
 	}
 	public void homeButtonClick() {
 		this.getHomeButton().click();
